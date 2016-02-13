@@ -1,0 +1,21 @@
+AddDefaultCharset utf-8
+php_flag display_errors on
+Options -MultiViews
+ServerSignature Off
+
+<IfModule mod_setenvif.c>
+	SetEnv TZ Europe/Moscow
+</IfModule>
+
+RewriteEngine On
+
+RewriteBase /my_mvc/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L] #url - для $_GET['url']
+
+
+
